@@ -19,7 +19,6 @@
 # Ignore variable dat
 /.env
 /log/[a-z0-9-]*
-/data/
 /backups/
 
 # Ignore custom MySQL configs

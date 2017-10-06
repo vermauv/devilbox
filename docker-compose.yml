@@ -352,123 +352,123 @@ services:
   # ----------------------------------------
   # POSTGRESQL
   # ----------------------------------------
-  pgsql:
-    image: postgres:${PGSQL_SERVER:-9.6}
-
-    # Manually build via `docker-compose build`
-    #build:
-        #context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git#1
-    #    context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git
-
-    environment:
-
-      - POSTGRES_USER=${PGSQL_ROOT_USER}
-      - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
-      - PGDATA=/var/lib/postgresql/data/pgdata
-
-    ports:
-      # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_PGSQL}:5432"
-
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.13
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql
-
-      # Mount PostgreSQL Data directory
-      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata
-
-    depends_on:
-      - bind
-      - php
-      - httpd
-
-
-  # ----------------------------------------
-  # Redis
-  # ----------------------------------------
-  redis:
-    image: redis:${REDIS_SERVER:-3.2}
-
-    ports:
-      # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_REDIS}:6379"
-
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.14
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis
-
-    depends_on:
-      - bind
-      - php
-      - httpd
+#  pgsql:
+#    image: postgres:${PGSQL_SERVER:-9.6}
+#
+#    # Manually build via `docker-compose build`
+#    #build:
+#        #context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git#1
+#    #    context: https://github.com/cytopia/docker-${MYSQL_SERVER}.git
+#
+#    environment:
+#
+#      - POSTGRES_USER=${PGSQL_ROOT_USER}
+#      - POSTGRES_PASSWORD=${PGSQL_ROOT_PASSWORD}
+#      - PGDATA=/var/lib/postgresql/data/pgdata
+#
+#    ports:
+#      # [local-machine:]local-port:docker-port
+#      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_PGSQL}:5432"
+#
+#    networks:
+#      app_net:
+#        ipv4_address: 172.16.238.13
+#
+#    volumes:
+#      # ---- Format: ----
+#      # HOST-DIRECTORY : DOCKER-DIRECTORY
+#
+#      # Mount logs
+#      - ${DEVILBOX_PATH}/log/pgsql-${PGSQL_SERVER}:/var/log/postgresql
+#
+#      # Mount PostgreSQL Data directory
+#      - ${HOST_PATH_PGSQL_DATADIR}/${PGSQL_SERVER}:/var/lib/postgresql/data/pgdata
+#
+#    depends_on:
+#      - bind
+#      - php
+#      - httpd
+#
+#
+#  # ----------------------------------------
+#  # Redis
+#  # ----------------------------------------
+#  redis:
+#    image: redis:${REDIS_SERVER:-3.2}
+#
+#    ports:
+#      # [local-machine:]local-port:docker-port
+#      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_REDIS}:6379"
+#
+#    networks:
+#      app_net:
+#        ipv4_address: 172.16.238.14
+#
+#    volumes:
+#      # ---- Format: ----
+#      # HOST-DIRECTORY : DOCKER-DIRECTORY
+#
+#      # Mount logs
+#      - ${DEVILBOX_PATH}/log/redis-${REDIS_SERVER}:/var/log/redis
+#
+#    depends_on:
+#      - bind
+#      - php
+#      - httpd
 
 
   # ----------------------------------------
   # Memcached
   # ----------------------------------------
-  memcd:
-    image: memcached:${MEMCD_SERVER:-latest}
-
-    ports:
-      # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCD}:11211"
-
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.15
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount logs
-      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd
-
-    depends_on:
-      - bind
-      - php
-      - httpd
+#  memcd:
+#    image: memcached:${MEMCD_SERVER:-latest}
+#
+#    ports:
+#      # [local-machine:]local-port:docker-port
+#      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MEMCD}:11211"
+#
+#    networks:
+#      app_net:
+#        ipv4_address: 172.16.238.15
+#
+#    volumes:
+#      # ---- Format: ----
+#      # HOST-DIRECTORY : DOCKER-DIRECTORY
+#
+#      # Mount logs
+#      - ${DEVILBOX_PATH}/log/memcd-${MEMCD_SERVER}:/var/log/memcd
+#
+#    depends_on:
+#      - bind
+#      - php
+#      - httpd
 
 
   # ----------------------------------------
   # Mongo
   # ----------------------------------------
-  mongo:
-    image: mongo:${MONGO_SERVER:-latest}
-
-    ports:
-      # [local-machine:]local-port:docker-port
-      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MONGO}:27017"
-
-    networks:
-      app_net:
-        ipv4_address: 172.16.238.16
-
-    volumes:
-      # ---- Format: ----
-      # HOST-DIRECTORY : DOCKER-DIRECTORY
-
-      # Mount MongoDB Data directory
-      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db
-
-    depends_on:
-      - bind
-      - php
-      - httpd
+#  mongo:
+#    image: mongo:${MONGO_SERVER:-latest}
+#
+#    ports:
+#      # [local-machine:]local-port:docker-port
+#      - "${LOCAL_LISTEN_ADDR}${HOST_PORT_MONGO}:27017"
+#
+#    networks:
+#      app_net:
+#        ipv4_address: 172.16.238.16
+#
+#    volumes:
+#      # ---- Format: ----
+#      # HOST-DIRECTORY : DOCKER-DIRECTORY
+#
+#      # Mount MongoDB Data directory
+#      - ${HOST_PATH_MONGO_DATADIR}/${MONGO_SERVER}:/data/db
+#
+#    depends_on:
+#      - bind
+#      - php
+#      - httpd
 
 
 ################################################################################

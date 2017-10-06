@@ -1,3 +1,21 @@
+
+Setup platform.sh
+- setup site...
+- setup ssh
+- create dev from master
+- create stage from master
+
+Setup docker
+- git clone git@github.com:cytopia/devilbox.git
+- git submodule add git@github.com:vermauv/drupal8.git data/www/drupal8 -f
+- git submodule init
+- git submodule update
+
+setup devilbox
+- setup .env file
+- docker-compose up -d
+- composer install inside docker container
+
 # ![Devilbox](https://raw.githubusercontent.com/cytopia/devilbox/master/.devilbox/www/htdocs/assets/img/devilbox_80.png) The devilbox
 
 [![Join the chat at https://gitter.im/devilbox/Lobby](https://badges.gitter.im/devilbox/Lobby.svg)](https://gitter.im/devilbox/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
